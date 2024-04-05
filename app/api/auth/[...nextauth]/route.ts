@@ -38,11 +38,11 @@ import bcrypt from 'bcryptjs'
         // ...add more providers here
     ],
     callbacks: {
-        async signIn({ user, account }: { user: AuthUser; account: Account }) {
-          if (account?.provider == "credentials") {
-            return true;
-          }
-        },
+        // async signIn({ user, account }: { user: AuthUser; account: Account }) {
+        //   if (account?.provider == "credentials") {
+        //     return true;
+        //   }
+        // },
         async jwt({ token, user }: any) {
             // If the user object is available and has an ID, add it to the token
             if (user?.id) {

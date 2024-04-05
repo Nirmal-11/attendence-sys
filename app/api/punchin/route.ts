@@ -1,13 +1,12 @@
 // pages/api/punchin.ts
 import { getServerSession } from "next-auth";
-
+import { NextApiRequest } from 'next';
 import {type NextRequest, NextResponse } from 'next/server';
 import User from "@/app/lib/models";
 import connect from "@/app/lib/utils";
 
-export async function POST(request: NextRequest) {
-  const data = await request.json();
-  const session = await getServerSession(data);
+export async function POST(req: NextRequest | NextApiRequest) {
+  const session = await getServerSession(req);
   await connect();
 
   if (session) {
