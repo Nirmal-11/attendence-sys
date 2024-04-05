@@ -1,12 +1,13 @@
 // pages/api/punchstatus.ts
 import { getServerSession } from "next-auth";
-import { NextApiRequest } from 'next';
-import { NextResponse } from 'next/server';
+import {type NextRequest, NextResponse } from 'next/server';
 import User from "@/app/lib/models";
 import connect from "@/app/lib/utils";
 
-export async function GET(req: NextApiRequest) {
-  const session = await getServerSession(req);
+export async function GET(request: NextRequest) {
+  const data = await request.json();
+
+  const session = await getServerSession(data);
   await connect();
   if (session) {
     // User is signed in
