@@ -5,7 +5,7 @@ import User from "@/app/lib/models";
 import connect from "@/app/lib/utils";
 
 export async function GET(req: NextRequest) {
-  const session = await getServerSession(req);
+  const session = await getServerSession();
   await connect();
   if (session) {
     // User is signed in
