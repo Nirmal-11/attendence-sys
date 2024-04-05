@@ -1,11 +1,10 @@
 // pages/api/punchstatus.ts
 import { getServerSession } from "next-auth";
-import { NextApiRequest } from 'next';
 import {type NextRequest, NextResponse } from 'next/server';
 import User from "@/app/lib/models";
 import connect from "@/app/lib/utils";
 
-export async function GET(req: NextRequest | NextApiRequest) {
+export async function GET(req: NextRequest) {
   const session = await getServerSession(req);
   await connect();
   if (session) {
