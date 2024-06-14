@@ -1,6 +1,6 @@
 import { getServerSession } from "next-auth";
 import SessionProvider from "@/app/lib/SessionProvider";
-import AdminNav from '../ui/dashboard/adminnav';
+import AdminNav from '@/app/ui/dashboard/adminnav';
 
 export default async function Layout({ children }: { children: React.ReactNode }) {
     const session = await getServerSession();
