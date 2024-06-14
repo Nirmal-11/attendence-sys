@@ -9,7 +9,7 @@ import Loader from '@/app/ui/components/loader';
 
 
 
-const page = () => {
+const Page = () => {
     const [users, setUsers] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
 
@@ -114,4 +114,4 @@ const page = () => {
     )
 }
 
-export default page;
+export default Page;
