@@ -31,11 +31,6 @@ import bcrypt from 'bcryptjs'
                 }
             }
         }),
-        // GithubProvider({
-        //   clientId: process.env.GITHUB_ID,
-        //   clientSecret: process.env.GITHUB_SECRET,
-        // }),
-        // ...add more providers here
     ],
     callbacks: {
         // async signIn({ user, account }: { user: AuthUser; account: Account }) {
@@ -47,12 +42,15 @@ import bcrypt from 'bcryptjs'
             // If the user object is available and has an ID, add it to the token
             if (user?.id) {
               token.id = user.id;
+              token.isAdmin = user.isAdmin;
+
             }
             return token;
           },
           async session({ session, token }: any) {
             // Assign the user ID from the token to the session object
             session.user.id = token.id;
+            session.user.isAdmin = token.isAdmin;
             return session;
           },
         

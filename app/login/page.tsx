@@ -9,13 +9,14 @@ import { toast } from 'react-toastify';
 const Login = () => {
     const router = useRouter();
     const session = useSession();
-
-    console.log("session", session);
     
-
     useEffect(() => {
         if (session?.status === "authenticated") {
-            router.replace('/dashboard');
+            if (session.data.user?.isAdmin) {
+                router.replace('/admin'); 
+            } else {
+                router.replace('/dashboard')
+            }
         }
     }, [session, router])
 
@@ -30,12 +31,12 @@ const Login = () => {
         const password = e.target[1].value;
 
         if (!isValidEmail(email)) {
-            toast.error('Email is invalid');
+            toast.error('Email is invalid', {position: "top-center", theme: "dark"});
             return;
         }
 
         if (!password || password.length < 8) {
-            toast.error('The password is invalid');
+            toast.error('The password is invalid', {position: "top-center", theme: "dark"});
             return
         }
 
@@ -45,13 +46,13 @@ const Login = () => {
         })
 
         if (res?.error) {
-            toast.error('Invalid email or password');
+            toast.error('Invalid email or password', {position: "top-center", theme: "dark"});
             if (res?.url) {
                 router.replace("/dashboard")
             };
         }
         else {
-            toast.success('Loged in successfull!');
+            toast.success('Loged in successfull!', {position: "top-center", theme: "dark"});
         }
 
 
@@ -84,16 +85,6 @@ const Login = () => {
                                     Login
                                 </button>
                             </div>
-
-                            <div className="mt-4 font-semibold text-sm text-slate-500 text-center md:text-left">
-                                Don&apos;t have an account?{" "}
-                                <Link
-                                    className="text-red-600 hover:underline hover:underline-offset-4"
-                                    href="/register"
-                                >
-                                    Register
-                                </Link>
-                            </div>
                         </div>
                     </form>
                 </div>
@@ -108,3 +99,4 @@ const Login = () => {
 }
 
 export default Login
+

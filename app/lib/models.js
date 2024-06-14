@@ -13,6 +13,10 @@ const userSchema = new Schema({
     },
     punchInTimes: [Date],
     punchOutTimes: [Date],
+    isAdmin: {
+        type: Boolean,
+        default: false,
+    },
   
 }, { timestamps: true })
 

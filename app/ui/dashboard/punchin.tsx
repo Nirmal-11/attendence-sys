@@ -15,7 +15,6 @@ export default function PunchIn() {
     const checkPunchStatus = async () => {
       try {
         const response = await axios.get('/api/punchstatus', { params: { userId: session?.user.id } });
-        console.log("punchs", response);
         
         if (response.data.punchInTime) {
           setPunchInTime(new Date(response.data.punchInTime));
@@ -36,13 +35,13 @@ export default function PunchIn() {
       const response = await axios.post('/api/punchin', { userId: session.user.id });
       if (response.data.punchInTime) {
         setPunchInTime(new Date(response.data.punchInTime));
-        toast.success("Punched In");
+        toast.success("Punched In", {position: "top-center", theme: "dark"});
       } else {
-        toast.error("No punch-in time received");
+        toast.error("No punch-in time received", {position: "top-center", theme: "dark"});
       }
     } catch (error) {
       console.error('Error punching in:', error);
-      toast.error("You have already punched In for today");
+      toast.error("You have already punched In for today", {position: "top-center", theme: "dark"});
     }
   };
 
@@ -51,13 +50,13 @@ export default function PunchIn() {
       const response = await axios.post('/api/punchout', { userId: session?.user.id });
       if (response.data.punchOutTime) {
         setPunchOutTime(new Date(response.data.punchOutTime));
-        toast.success("Punched Out");
+        toast.success("Punched Out", {position: "top-center", theme: "dark"});
       } else {
-        toast.error("No punch-out time received");
+        toast.error("No punch-out time received", {position: "top-center", theme: "dark"});
       }
     } catch (error) {
       console.error('Error punching out:', error);
-      toast.error("You have already punched Out for today");
+      toast.error("You have already punched Out for today", {position: "top-center", theme: "dark"});
     }
   };
 
