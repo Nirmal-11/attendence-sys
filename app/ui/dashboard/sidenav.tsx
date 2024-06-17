@@ -11,6 +11,9 @@ export default function SideNav() {
   const { data: session, status } = useSession();
   const [isLoading, setIsLoading] = useState(true);
 
+  console.log("login session", session);
+  
+
   useEffect(() => {
     if (status !== 'loading') {
       setIsLoading(false);
