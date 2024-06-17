@@ -10,18 +10,21 @@ import Loader from '../components/loader';
 export default function SideNav() {
   const { data: session, status } = useSession();
   const [isLoading, setIsLoading] = useState(true);
-  console.log("login session", session);
-  
 
   useEffect(() => {
+    console.log("Session status:", status);
     if (status !== 'loading') {
       setIsLoading(false);
     }
   }, [status]);
 
+  useEffect(() => {
+    console.log("UserSession data:", session);
+  }, [session]);
+
   const handleSignOut = () => {
     toast.success('You have been logged out!!', { position: "top-center", theme: "dark" });
-    signOut({ callbackUrl: process.env.NEXTAUTH_URL });
+    signOut({ callbackUrl: process.env.NEXT_PUBLIC_NEXTAUTH_URL || "http://localhost:3000" });
   };
 
   return (
