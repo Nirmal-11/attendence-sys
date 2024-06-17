@@ -8,6 +8,8 @@ import { toast } from "react-toastify";
 const Login = () => {
     const router = useRouter();
     const { data: session, status } = useSession();  // Destructure session and status
+    console.log("data session", session);
+    
 
     useEffect(() => {
         if (status === "authenticated") {
