@@ -16,6 +16,11 @@ export default function SideNav() {
       setIsLoading(false);
     }
   }, [status]);
+  
+  const handleSignOut = () => {
+    toast.success('You have been logged out!!', { position: "top-center", theme: "dark" });
+    signOut({ callbackUrl: process.env.NEXTAUTH_URL });
+  };
 
   return (
     <div className="flex h-full flex-col px-3 py-4 md:px-2">
@@ -37,10 +42,7 @@ export default function SideNav() {
             <></>
           ) : (
             <>
-              <button onClick={() => {
-                toast.success('You have been logged out!!');
-                signOut({ callbackUrl: 'http://localhost:3000' });
-              }} className="flex h-[48px] w-full grow items-center justify-center gap-2 rounded-md bg-gray-50 p-3 text-sm font-medium hover:bg-sky-100 hover:text-blue-600 md:flex-none md:justify-start md:p-2 md:px-3">
+              <button onClick={handleSignOut} className="flex h-[48px] w-full grow items-center justify-center gap-2 rounded-md bg-gray-50 p-3 text-sm font-medium hover:bg-sky-100 hover:text-blue-600 md:flex-none md:justify-start md:p-2 md:px-3">
                 <PowerIcon className="w-6" />    Sign Out
               </button>
             </>
