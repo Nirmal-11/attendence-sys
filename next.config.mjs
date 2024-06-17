@@ -1,3 +1,4 @@
+/** @type {import('next').NextConfig} */
 import dotenv from 'dotenv';
 
 // Load environment variables from .env.local for development
@@ -21,3 +22,5 @@ const nextConfig = {
 };
 
 export default nextConfig;
+
+  
