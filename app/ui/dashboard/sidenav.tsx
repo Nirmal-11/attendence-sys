@@ -17,7 +17,7 @@ export default function SideNav() {
     if (status !== 'loading') {
       setIsLoading(false);
     }
-  }, [session, status]);
+  }, [status]);
 
   const handleSignOut = () => {
     toast.success('You have been logged out!!', { position: "top-center", theme: "dark" });
