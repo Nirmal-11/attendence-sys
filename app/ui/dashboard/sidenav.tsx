@@ -10,7 +10,6 @@ import Loader from '../components/loader';
 export default function SideNav() {
   const { data: session, status } = useSession();
   const [isLoading, setIsLoading] = useState(true);
-
   console.log("login session", session);
   
 
@@ -19,7 +18,7 @@ export default function SideNav() {
       setIsLoading(false);
     }
   }, [status]);
-  
+
   const handleSignOut = () => {
     toast.success('You have been logged out!!', { position: "top-center", theme: "dark" });
     signOut({ callbackUrl: process.env.NEXTAUTH_URL });
@@ -41,15 +40,11 @@ export default function SideNav() {
         <div>
           {isLoading ? (
             <Loader />
-          ) : !session ? (
-            <></>
-          ) : (
-            <>
-              <button onClick={handleSignOut} className="flex h-[48px] w-full grow items-center justify-center gap-2 rounded-md bg-gray-50 p-3 text-sm font-medium hover:bg-sky-100 hover:text-blue-600 md:flex-none md:justify-start md:p-2 md:px-3">
-                <PowerIcon className="w-6" />    Sign Out
-              </button>
-            </>
-          )}
+          ) : session ? (
+            <button onClick={handleSignOut} className="flex h-[48px] w-full grow items-center justify-center gap-2 rounded-md bg-gray-50 p-3 text-sm font-medium hover:bg-sky-100 hover:text-blue-600 md:flex-none md:justify-start md:p-2 md:px-3">
+              <PowerIcon className="w-6" /> Sign Out
+            </button>
+          ) : null}
         </div>
       </div>
     </div>
