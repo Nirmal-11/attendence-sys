@@ -1,5 +1,4 @@
 "use client";
-import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { signIn, useSession } from "next-auth/react";
@@ -12,7 +11,7 @@ const Login = () => {
 
     useEffect(() => {
         if (status === "authenticated") {
-            if (session?.user?.isAdmin) {
+            if (session.user.isAdmin) {
                 router.replace("/admin");
             } else {
                 router.replace("/dashboard");
