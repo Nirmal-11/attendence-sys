@@ -1,13 +1,22 @@
-"use client"
+"use client";
 import Link from 'next/link';
 import NavLinks from '@/app/ui/dashboard/nav-links';
 import { PowerIcon } from '@heroicons/react/24/outline';
 import { signOut, useSession } from "next-auth/react";
 import { toast } from 'react-toastify';
+import { useEffect, useState } from 'react';
+import Loader from '../components/loader';
 
 export default function SideNav() {
-  const { data: session }: any = useSession();
-  
+  const { data: session, status } = useSession();
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    if (status !== 'loading') {
+      setIsLoading(false);
+    }
+  }, [status]);
+
   return (
     <div className="flex h-full flex-col px-3 py-4 md:px-2">
       <Link
@@ -22,7 +31,9 @@ export default function SideNav() {
         <NavLinks />
         <div className="hidden h-auto w-full grow rounded-md bg-gray-50 md:block"></div>
         <div>
-          {!session ? (
+          {isLoading ? (
+            <Loader />
+          ) : !session ? (
             <></>
           ) : (
             <>
