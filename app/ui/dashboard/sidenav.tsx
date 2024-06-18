@@ -25,7 +25,7 @@ export default function SideNav() {
   const handleSignOut = () => {
     toast.success('You have been logged out!!', { position: "top-center", theme: "dark" });
     const callbackUrl = process.env.NODE_ENV === 'production'
-      ? process.env.MONGO_URL_PROD
+      ? process.env.NEXTAUTH_URL
       : "http://localhost:3000";
     signOut({ callbackUrl });
   };

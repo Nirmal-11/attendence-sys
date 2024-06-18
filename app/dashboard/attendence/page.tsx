@@ -20,7 +20,7 @@ const Page = () => {
                 }
 
                 const data = await res.json();
-
+                
                 setAllUsers(data.users);
                 setIsLoading(false);
 
