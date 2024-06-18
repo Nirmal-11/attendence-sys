@@ -54,9 +54,6 @@ const Login = () => {
                 router.replace("/dashboard");
             }
         } else {
-            router.replace('/');
-            console.log("log success");
-            
             toast.success("Logged in successfully!", { position: "top-center", theme: "dark" });
         }
     };

@@ -6,15 +6,17 @@ import { useSession } from 'next-auth/react';
 import { signOut } from 'next-auth/react'
 import { toast } from 'react-toastify';
 import { useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
+
 
 export default function SideNav() {
   const { data: session, status } = useSession();
   const [isLoading, setIsLoading] = useState(true);
-
   
 
   useEffect(() => {
     console.log("Session status 1:", status);
+
     if (status !== 'loading') {
       setIsLoading(false);
     }
