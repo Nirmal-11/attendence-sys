@@ -1,3 +1,5 @@
+// Example NextAuth configuration using environment variables
+
 import NextAuth, { AuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import User from "@/app/lib/models";
@@ -11,7 +13,7 @@ const authOptions: AuthOptions = {
       name: "Credentials",
       credentials: {
         email: { label: "Email", type: "text" },
-        password: { label: "password", type: "password" },
+        password: { label: "Password", type: "password" },
       },
       async authorize(credentials: any) {
         await connect();
@@ -21,7 +23,7 @@ const authOptions: AuthOptions = {
           if (user) {
             const isPasswordCorrect = await bcrypt.compare(credentials.password, user.password);
             if (isPasswordCorrect) {
-              return user;
+              return Promise.resolve(user); // Ensure to return a promise
             } else {
               throw new Error('Invalid password');
             }
@@ -36,14 +38,14 @@ const authOptions: AuthOptions = {
     }),
   ],
   callbacks: {
-    async jwt({ token, user }: any) {
+    async jwt({ token, user }:any) {
       if (user?.id) {
         token.id = user.id;
         token.isAdmin = user.isAdmin;
       }
       return token;
     },
-    async session({ session, token }: any) {
+    async session({ session, token }:any) {
       session.user.id = token.id;
       session.user.isAdmin = token.isAdmin;
       return session;
