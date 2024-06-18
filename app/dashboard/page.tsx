@@ -5,15 +5,15 @@ const Dashboard = async () => {
 
   const session = await getServerSession();
 
-  if (!session) {
-    redirect('/')
-  }
+  // if (!session) {
+  //   redirect('/')
+  // }
 
 
   return (
     <div>
       <div className="flex items-center flex-row gap-5">
-        Welcome {session.user?.email}
+        Welcome {session?.user?.email}
         {<PunchInButton />}
       </div>
     </div>
