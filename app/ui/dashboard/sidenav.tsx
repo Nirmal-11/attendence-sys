@@ -9,6 +9,7 @@ import { useEffect, useState } from 'react';
 export default function SideNav() {
   const { data: session, status } = useSession();
   const [isLoading, setIsLoading] = useState(true);
+  
 
   useEffect(() => {
     console.log("Session status:", status);
