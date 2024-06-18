@@ -1,6 +1,6 @@
 const Loader = () => {
     return (
-        <div>
+        <div className=" absolute inset-x-0 top-10 ">
             <div className="text-center py-4">
                 <span className="flex items-center justify-center">
                     <span role="status">
