@@ -5,7 +5,6 @@ import { PowerIcon } from '@heroicons/react/24/outline';
 import { signOut, useSession } from "next-auth/react";
 import { toast } from 'react-toastify';
 import { useEffect, useState } from 'react';
-import Loader from '../components/loader';
 
 export default function SideNav() {
   const { data: session, status } = useSession();
@@ -17,10 +16,16 @@ export default function SideNav() {
       setIsLoading(false);
     }
   }, [status]);
-
+  
   useEffect(() => {
     console.log("UserSession data:", session);
+    if (session) {
+      console.log("User is authenticated");
+    } else {
+      console.log("User is not authenticated");
+    }
   }, [session]);
+  
 
   const handleSignOut = () => {
     toast.success('You have been logged out!!', { position: "top-center", theme: "dark" });
