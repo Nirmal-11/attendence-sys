@@ -5,6 +5,7 @@ import { signIn, useSession } from "next-auth/react";
 import { useEffect } from "react";
 import { toast } from "react-toastify";
 
+
 const Login = () => {
     const router = useRouter();
     const { data: session, status } = useSession();  // Destructure session and status
@@ -53,6 +54,9 @@ const Login = () => {
                 router.replace("/dashboard");
             }
         } else {
+            router.replace('/');
+            console.log("log success");
+            
             toast.success("Logged in successfully!", { position: "top-center", theme: "dark" });
         }
     };
