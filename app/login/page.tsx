@@ -92,16 +92,9 @@ const Login = () => {
                         alt="dashboard desktop image"
                         width={1000}
                         height={850}
-                        className="hidden md:block"
+                        className="hidden w-auto md:block"
                     />
-                    <Image
-                        src="https://images.pexels.com/photos/5935787/pexels-photo-5935787.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-                        priority
-                        alt="dashboard mobile image"
-                        width={560}
-                        height={620}
-                        className="md:hidden block"
-                    />
+
                 </div>
             </div>
         </div>

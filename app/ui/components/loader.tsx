@@ -1,7 +1,7 @@
 const Loader = () => {
     return (
-        <div className=" absolute inset-x-0 top-10 ">
-            <div className="text-center py-4">
+        <tr className="absolute top-10" style={{right: "50%"}}>
+            <td className="text-center py-4">
                 <span className="flex items-center justify-center">
                     <span role="status">
                         <svg aria-hidden="true" className="inline w-8 h-8 text-gray-200 animate-spin fill-blue-600" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -11,8 +11,8 @@ const Loader = () => {
                         <span className="sr-only">Loading...</span>
                     </span>
                 </span>
-            </div>
-        </div>
+            </td>
+        </tr>
     );
 };
 
